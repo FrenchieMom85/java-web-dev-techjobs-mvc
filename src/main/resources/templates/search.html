@@ -14,22 +14,22 @@
         <h2>Search by:</h2>
 
         <p>
-            <span th:each="column : ${columns}">
+            <span th:each="item : ${columns}">
                 <input
                         type="radio"
-                        name="searchType"
-                        th:id="${column.key}"
-                        th:value="${column.key}"
-                        th:checked="${column.key == checkedValue}"/>
+                        name="column"
+                        th:id="${item.key}"
+                        th:value="${item.key}"
+                        th:checked="${item.key == checkedValue}"/>
 
-                <label th:for="${column.key}" th:text="${column.value}"></label>
+                <label th:for="${item.key}" th:text="${item.value}"></label>
             </span>
 
         </p>
 
         <p>
-            <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <label for="value">Keyword:</label>
+            <input type="text" name="value" id="value" />
         </p>
 
         <input type="submit" value="Search" />
@@ -51,25 +51,25 @@
             <tr>
                 <td class="section">Employer: </td>
                 <td>
-                    <a th:href="${job.employer.value}" th:text="${job.employer.value}"></a>
+                    <a th:href="@{/search/results(column=employer,value=${job.employer})}" th:text="${job.employer}"></a>
                 </td>
             </tr>
             <tr>
                 <td class="section">Location: </td>
                 <td>
-                    <a th:href="${job.location.value}" th:text="${job.location.value}"></a>
+                    <a th:href="@{/search/results(column=location,value=${job.location})}" th:text="${job.location}"></a>
                 </td>
             </tr>
             <tr>
                 <td class="section">Position Type: </td>
                 <td>
-                    <a th:href="${job.positionType.value}" th:text="${job.positionType.value}"></a>
+                    <a th:href="@{/search/results(column=positionType,value=${job.positionType})}" th:text="${job.positionType}"></a>
                 </td>
             </tr>
             <tr>
                 <td class="section">Skill: </td>
                 <td>
-                    <a th:href="${job.coreCompetency.value}" th:text="${job.coreCompetency.value}"></a>
+                    <a th:href="@{/search/results(column=coreCompetency,value=${job.coreCompetency})}" th:text="${job.coreCompetency}"></a>
                 </td>
             </tr>
             </tr>
